@@ -5,8 +5,8 @@ deepspeed LLaVA/llava/train/train_xformers.py \
     --deepspeed ./zero2.json \
     --model_name_or_path liuhaotian/llava-v1.5-13b \
     --version v1 \
-    --data_path ./data/instruct.json \
-    --image_folder ./data \
+    --data_path ../data/instruct.json \
+    --image_folder ../data \
     --vision_tower openai/clip-vit-large-patch14-336 \
     --mm_projector_type mlp2x_gelu \
     --mm_vision_select_layer -2 \
@@ -15,7 +15,7 @@ deepspeed LLaVA/llava/train/train_xformers.py \
     --image_aspect_ratio pad \
     --group_by_modality_length True \
     --bf16 False \
-    --output_dir ./checkpoints/llava-v1.5-13b-task-lora-test2 \
+    --output_dir ./checkpoints/llava-v1.5-13b-task-lora \
     --num_train_epochs 2 \
     --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 4 \
