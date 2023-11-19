@@ -2,12 +2,12 @@ from pathlib import Path
 
 import pandas as pd
 
-from multimodal_sft.instruction.utils import fill_template
+from multimodal_sft.instruction_utils import fill_template
 
 
 def main():
     data_dir = Path("data")
-    image_dir = data_dir / "output"
+    image_dir = data_dir / "synth_data"
     df_info = pd.read_csv(data_dir / "synthetic.csv")
     df_sign = pd.read_csv(data_dir / "roadsign_detail.csv")
     df_qa = pd.read_csv(data_dir / "qa.csv")
@@ -26,8 +26,8 @@ def main():
         "inverted_triangle": "逆三角の",
     }
     color2jp = {
-        "r": "赤い",
-        "b": "青い",
+        "r": "赤",
+        "b": "青",
     }
     position2jp = {"left": "左", "right": "右", "center": "中央"}
     for i, row in df_info.iterrows():
@@ -56,7 +56,7 @@ def main():
             answer_text = fill_template(qa_row["answer"], info_dict)
 
             # 結果を保存
-            result_dict["image_name"].append(image_name)
+            result_dict["image_name"].append(image_path.name)
             result_dict["question"].append(question_text)
             result_dict["answer"].append(answer_text)
 
