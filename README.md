@@ -1,3 +1,37 @@
+# 合成データの作成
+
+## インストール
+合成データの作成に必要なパッケージは Poetry で管理しています。
+本リポジトリをクローンし、クローンしたディレクトリ内で以下のコマンドを実行してください。
+
+```sh
+poetry install
+```
+
+## データ
+合成データの作成に必要なデータは以下のページからダウンロードしてください。
+
+- [Google Drive](https://drive.google.com/drive/folders/11AQ62JCuoOEP2kvfbgVvh31-ssCppiRb?usp=sharing)
+- [Japanese Road Signs Computer Vision Project](https://universe.roboflow.com/ritsumeikan/japanese-road-signs)
+
+## スクリプト
+
+### `create_synthdata.py`  
+合成データを作成するスクリプトです。
+以下のようにデータを保存しているディレクトリを指定して実行できます。
+
+```sh
+poetry run python create_synthdata.py --data ./data
+```
+
+### `create_instructions.py`
+インストラクションデータを作成するスクリプトです。
+以下のようにデータを保存しているディレクトリを指定して実行できます。
+
+```sh
+poetry run python create_instructions.py --data ./data
+```
+
 # LLaVAのファインチューニング
 動作確認はDGX Station V100 で実施しています。
 ## 環境構築
