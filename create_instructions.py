@@ -1,17 +1,28 @@
+import argparse
 from pathlib import Path
 
 import pandas as pd
 
-from multimodal_sft.instruction.utils import fill_template
+from multimodal_sft.instruction_utils import fill_template
 
 
 def main():
-    data_dir = Path("data")
-    image_dir = data_dir / "output"
-    df_info = pd.read_csv(data_dir / "synthetic.csv")
+    parser = argparse.ArgumentParser(description="合成画像に関する質問と回答を生成するスクリプト")
+    parser.add_argument("--data", type=str, default="data", help="データを保存しているディレクトリ")
+    args = parser.parse_args()
+
+    data_dir = Path(args.data)
+
+    # 合成画像データのディレクトリ
+    image_dir = data_dir / "synth_data"
+    # 合成画像の情報
+    df_info = pd.read_csv(data_dir / "synthetic_info.csv")
+    # 標識に関する説明
     df_sign = pd.read_csv(data_dir / "roadsign_detail.csv")
+    # 質問と回答のテンプレート
     df_qa = pd.read_csv(data_dir / "qa.csv")
 
+    # 1枚の画像に対して3通りの質問・回答を生成する
     question_per_image = 3
     result_dict = {
         "image_name": [],
@@ -19,16 +30,19 @@ def main():
         "answer": [],
     }
 
+    # 形に関する日本語表現
     shape2jp = {
         "circle": "丸い",
         "triangle": "三角の",
         "rectangle": "四角い",
         "inverted_triangle": "逆三角の",
     }
+    # 色に関する日本語表現
     color2jp = {
-        "r": "赤い",
-        "b": "青い",
+        "r": "赤",
+        "b": "青",
     }
+    # 位置に関する日本語表現
     position2jp = {"left": "左", "right": "右", "center": "中央"}
     for i, row in df_info.iterrows():
         image_name = row["image_name"]
@@ -56,7 +70,7 @@ def main():
             answer_text = fill_template(qa_row["answer"], info_dict)
 
             # 結果を保存
-            result_dict["image_name"].append(image_name)
+            result_dict["image_name"].append(image_path.name)
             result_dict["question"].append(question_text)
             result_dict["answer"].append(answer_text)
 
@@ -65,4 +79,5 @@ def main():
 
 
 if __name__ == "__main__":
+    main()
     main()
