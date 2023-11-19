@@ -16,6 +16,18 @@ poetry install
 
 ## スクリプト
 
+### `segmentation.py`
+標識のセグメンテーションを行うスクリプトです。
+以下のコマンドで [segment-anything](https://github.com/facebookresearch/segment-anything) のモデルをダウンロードして使用します。
+```sh
+!curl -OL https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+```
+
+データを保存しているディレクトリを指定して実行できます。
+```sh
+poetry run python segmentation.py --data ./data
+```
+
 ### `create_synthdata.py`  
 合成データを作成するスクリプトです。
 以下のようにデータを保存しているディレクトリを指定して実行できます。

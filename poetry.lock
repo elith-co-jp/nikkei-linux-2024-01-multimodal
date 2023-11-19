@@ -2900,6 +2900,25 @@ files = [
 ]
 
 [[package]]
+name = "segment_anything"
+version = "1.0"
+description = ""
+optional = false
+python-versions = "*"
+files = []
+develop = false
+
+[package.extras]
+all = ["matplotlib", "onnx", "onnxruntime", "opencv-python", "pycocotools"]
+dev = ["black", "flake8", "isort", "mypy"]
+
+[package.source]
+type = "git"
+url = "https://github.com/facebookresearch/segment-anything.git"
+reference = "HEAD"
+resolved_reference = "6fdee8f2727f4506cfbbe553e23b895e27956588"
+
+[[package]]
 name = "send2trash"
 version = "1.8.2"
 description = "Send file to trash natively under Mac OS X, Windows and Linux"
@@ -3389,4 +3408,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.12"
-content-hash = "aadc4c17bd60eb8ce7f63e5b25a68583e5a9616fd87ba44ddb67ea180e08e959"
+content-hash = "21aba19f593bf3faf878ba38746b0aecdc26585499ef7d12f482d8bb6cdf6183"
