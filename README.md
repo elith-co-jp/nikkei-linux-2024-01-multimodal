@@ -77,3 +77,8 @@ Gradio Web UI でファインチューニングしたモデルを利用する際
 ```
 python -m llava.serve.model_worker --host 0.0.0.0 --controller http://localhost:10000 --port 40000 --worker http://localhost:40000 --model-path ./checkpoints/llava-v1.5-13b-task-lora --model-base liuhaotian/llava-v1.5-13b
 ```
+
+# ライセンス
+- Google Drive にアップロードしたデータは研究目的でのみ使用することを意図し、ライセンスを付与しています。このデータセットはCC BY NC 4.0（非商用利用のみ許可）であり、このデータセットを使って学習したモデルは非営利目的以外では使用しないでください。
+- Google Drive のデータを除くスクリプト部分については AGPL-3.0 が付与されています。
+
